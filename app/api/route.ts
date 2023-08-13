@@ -5,12 +5,12 @@ import { BcWildfireProvider } from "@/data/bc-wildfire";
 export async function GET(req: Request) {
   try {
     const { userId } = auth();
-    console.log(
-      userId,
-      req.headers,
-      req.headers.get("user-agent"),
-      req.headers.get("x-forwarded-for")
-    );
+    // console.log(
+    //   userId,
+    //   req.headers,
+    //   req.headers.get("user-agent"),
+    //   req.headers.get("x-forwarded-for")
+    // );
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 403 });
     }
@@ -19,10 +19,10 @@ export async function GET(req: Request) {
       await BcWildfireProvider.getAllCurrentFire()
     ).data.features.map((each) => each.properties);
 
-    console.log("[FIRES_GET]", res);
+    // console.log("[FIRES_GET]", res);
     return NextResponse.json("cool", { status: 200 });
   } catch (error) {
-    console.log("[FIRES_GET]", error);
+    // console.log("[FIRES_GET]", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }

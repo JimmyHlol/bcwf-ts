@@ -1,17 +1,16 @@
-import { format } from "date-fns";
 import { WildfireClient } from "./components/client";
-import { BcWildfireFeatureProperty, BcWildfireProvider } from "@/data/bc-wildfire";
-
-
+import {
+  BcWildfireFeatureProperty,
+  BcWildfireProvider,
+} from "@/data/bc-wildfire";
 
 const BcWildFirePage = async () => {
+  const fireFeatures = (await BcWildfireProvider.getAllCurrentFire()).data
+    .features;
 
-  const fireFeatures = (
-    await BcWildfireProvider.getAllCurrentFire()
-  ).data.features;
-  
-
-const fireProperties = fireFeatures.map((each) => each.properties) as unknown as BcWildfireFeatureProperty[];
+  const fireProperties = fireFeatures.map(
+    (each) => each.properties
+  ) as unknown as BcWildfireFeatureProperty[];
 
   return (
     <div className="flex-col">
