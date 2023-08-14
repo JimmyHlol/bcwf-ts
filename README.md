@@ -27,8 +27,34 @@ You have the flexibility to deploy as per your requirements. However, we primari
 	- install docker to your local workstation, if you are going to run it in local.
 
 3. IDE
-4. Setting 
-	- you can using whatever you want, but I am using vsCode for this project development
+- you can using whatever you want, but I am using vsCode for this project development
+
+4. Geting 3rd party service
+- Startup development:
+- Selfhost development:
+	- Application issue logging: 
+```mermaid
+graph LR
+A[Next.js web application] --> B((Winston npm package))
+B --Transports--> C[ElasticSearch]
+E[Kibanna web client] --> D[Kibana]
+C --> D[Kibana]
+```
+- Software issue logging (redis, database, node application, etc. ):   
+```mermaid
+graph LR
+A[grafan] --> B((prometheus))
+B --> C[redis exporter]
+	C --> L[redis1, redis2,...]
+B --> D[node exporter]
+	D --> K[node application, ...]
+B --> E[ruleManagement]
+	E --> I[alter]
+B --> F[cadvisor]
+	F --> J[docker]
+B --> G[MariaDB exporter]
+	G --> H[MariaDB, Mysql]
+```
 
 
 ### Setting .env*
@@ -56,7 +82,14 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ##### *Sentry*
+Sentry is logging service for starup develpment
+
 How to setup Sentry [document](https://docs.sentry.io/platforms/javascript/guides/nextjs/)
+
+##### *Clerk*
+Clerk is Oauth service provider for starup develpment
+
+How to setup Clerk [document](https://clerk.com/docs)
 
 ## License
 
