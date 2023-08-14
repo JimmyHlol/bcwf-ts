@@ -20,17 +20,30 @@ You have the flexibility to deploy as per your requirements. However, we primari
 ### Dependencies and Installing
 
 1. running the project in your local Workstation
-	- install node 18.13.0 or above, but highly suggest running in 18.13.0 just for consistence.
-	- you can install pnpm or yarn, if you want. But in this project, we will are using npm by default.
+- install node 18.13.0 or above, but highly suggest running in 18.13.0 just for consistency.
+- you can install pnpm or yarn, if you want. But in this project, we will are using npm by default.
 
 2. Running in docker
-	- install docker to your local workstation, if you are going to run it in local.
+- install docker to your local workstation, if you are going to run it locally.
 
 3. IDE
-- you can using whatever you want, but I am using vsCode for this project development
+- you can use whatever you want, but I am using vsCode for this project's development
 
-4. Geting 3rd party service
+4. System graph and 3rd party integration
+- Current workflow for Startup:
+```mermaid
+graph LR
+A[Client Next.js client side] --> B((Clerk Oauth))
+B --> C[Next.js server side]
+```
 - Startup development:
+	- Application issue logging: 
+```mermaid
+graph LR
+A[Client brower] --> B((Next.js app))
+B --> C[Sentry]
+D[Admin user view log] --> C[Sentry]
+```
 - Selfhost development:
 	- Application issue logging: 
 ```mermaid
@@ -64,8 +77,8 @@ Please change `!!!please-change-this-file-to-env!!!` to the `.env.*` file you wo
 3. `env.prod` is for production docker
 
 
-#### Developing the application in local workstation, and a dev container
-1. run in local workstation
+#### Developing the application in a local workstation, and a dev container
+1. run in the local workstation
 	```bash
 	npm run dev
 	```
@@ -82,12 +95,12 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ##### *Sentry*
-Sentry is logging service for starup develpment
+Sentry is a logging service for start-up development
 
 How to setup Sentry [document](https://docs.sentry.io/platforms/javascript/guides/nextjs/)
 
 ##### *Clerk*
-Clerk is Oauth service provider for starup develpment
+The clerk is an Oauth service provider for start-up development
 
 How to setup Clerk [document](https://clerk.com/docs)
 
@@ -97,5 +110,5 @@ How to setup Clerk [document](https://clerk.com/docs)
 
 # #Todo
 1. configuration for the vsCode IDE
-2. give out sample for Jest and Cypress
-3. how to setup instruction for vm with ELK log service
+2. give out samples for Jest and Cypress
+3. how to setup instructions for self-host VM with ELK log service
