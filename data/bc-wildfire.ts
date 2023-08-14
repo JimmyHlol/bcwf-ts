@@ -1,4 +1,5 @@
 import { httpClient } from "@/lib/httpClient";
+import { AxiosResponse } from "axios";
 
 export interface BcWildfireFeatureProperty {
   FIRE_NUMBER: string; //not null
@@ -46,9 +47,18 @@ interface CurrentBcWildfireResponse {
 
 export class BcWildfireProvider {
   static async getAllCurrentFire() {
-    const res = httpClient.get<CurrentBcWildfireResponse>(
-      `?service=WFS&version=2.0.0&request=GetFeature&typeName=pub:WHSE_LAND_AND_NATURAL_RESOURCE.PROT_CURRENT_FIRE_PNTS_SP&outputFormat=application/json`
-    );
-    return res;
+    const result = httpClient
+      .get<unknown, AxiosResponse<CurrentBcWildfireResponse>>(
+        `?service=WFS&version=2.0.0
+      &request=GetFeature
+      &typeName=pub:WHSE_LAND_AND_NATURAL_RESOURCE.PROT_CURRENT_FIRE_PNTS_SP
+      &outputFormat=application/json`
+      )
+      .then((res) => res)
+      .catch((err) => {
+        console.log(err, "getAllCurrentFire_error");
+        return null;
+      });
+    return result;
   }
 }

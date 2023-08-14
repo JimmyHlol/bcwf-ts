@@ -9,6 +9,7 @@ export function DebouncedInput({
   ...props
 }: {
   value: string | number;
+  // eslint-disable-next-line unused-imports/no-unused-vars
   onChange: (value: string | number) => void;
   debounce?: number;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange">) {
@@ -28,10 +29,11 @@ export function DebouncedInput({
   }, [value]);
 
   return (
-    <input
+    <Input
       {...props}
       value={value}
       onChange={(e) => setValue(e.target.value)}
+      className="max-w-sm"
     />
   );
 }

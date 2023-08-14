@@ -29,33 +29,18 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DebouncedInput } from "@/components/ui/debounced-input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
-interface DataTableProps<TData, TValue> {
+interface DataTableProps<TData> {
   columnHeaders: ColumnDef<TData>[];
   data: TData[];
   csvOptions: Options;
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData>({
   columnHeaders,
   data,
   csvOptions,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<TData>) {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
@@ -63,6 +48,7 @@ export function DataTable<TData, TValue>({
   // const newColumns = columnHeaders as ColumnDef<TData>[];
   const columns = React.useMemo<ColumnDef<TData>[]>(
     () => columnHeaders as ColumnDef<TData>[],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 

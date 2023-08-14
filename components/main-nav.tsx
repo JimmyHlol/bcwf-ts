@@ -1,9 +1,6 @@
 "use client";
 
-import Link from "next/link"
-import { useParams, usePathname } from "next/navigation";
-
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 export function MainNav({
   className,
@@ -14,5 +11,5 @@ export function MainNav({
       className={cn("flex items-center space-x-4 lg:space-x-6", className)}
       {...props}
     />
-  )
-};
+  );
+}

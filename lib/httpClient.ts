@@ -19,17 +19,11 @@ export const httpClient: AxiosInstance = axios.create({
 httpClient.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     // count collect request information here
-    isServer() &&
-      console.log(
-        "request@@@",
-        config.headers.get("user-agent"),
-        config.headers.get("x-forwarded-for")
-      );
     return config;
   },
   (error: AxiosError) => {
     // log error here
-    isServer() && console.log("request error", error);
+    isServer() && console.log("@@request error@@", error);
     return Promise.reject(error);
   }
 );
@@ -37,7 +31,6 @@ httpClient.interceptors.request.use(
 httpClient.interceptors.response.use(
   (axiosResponse: AxiosResponse<unknown>) => {
     // Any status code that lie within the range of 2xx cause this function to trigger
-    isServer() && console.log("response@@@", axiosResponse);
     return axiosResponse;
   },
   (err: AxiosError<unknown>) => {
@@ -66,7 +59,7 @@ httpClient.interceptors.response.use(
           !isServer() && toast.error("Something went wrong");
       }
     }
-    isServer() && console.log("response error", err);
+    isServer() && console.log("@@response error@@", err);
     return Promise.reject(err);
   }
 );

@@ -1,6 +1,6 @@
 "use client";
 
-import { ExportToCsv, Options } from "export-to-csv";
+import { Options } from "export-to-csv";
 
 import { DataTable } from "@/components/ui/data-table";
 import { Heading } from "@/components/ui/heading";
@@ -10,11 +10,11 @@ import { columns, WildfireColumn } from "./columns";
 // import { SimpleDateTable } from "@/components/ui/data-table";
 
 interface WildfireClientProps {
-  data: WildfireColumn[];
+  data: WildfireColumn[] | null;
 }
 
 const csvOptions: Options = {
-  filename: "Wildfires-" + new Date(Date.now()).toISOString(),
+  filename: "BCWildfires-" + new Date(Date.now()).toISOString(),
   fieldSeparator: ",",
   quoteStrings: '"',
   decimalSeparator: ".",
@@ -29,12 +29,22 @@ export const WildfireClient: React.FC<WildfireClientProps> = ({ data }) => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Wildfires (${data.length})`}
-          description={`Filter BC Wildfires for ${new Date().getFullYear()}`}
+          title={`BC wildfires (${data ? data.length : 0})`}
+          description={`Filter Wildfires for ${new Date().getFullYear()}`}
         />
       </div>
       <Separator />
-      <DataTable columnHeaders={columns} data={data} csvOptions={csvOptions} />
+      {data ? (
+        <DataTable
+          columnHeaders={columns}
+          data={data}
+          csvOptions={csvOptions}
+        />
+      ) : (
+        <div className="flex items-center justify-center h-96">
+          <p className="text-2xl text-gray-400">Something went wrong :(</p>
+        </div>
+      )}
     </>
   );
 };
