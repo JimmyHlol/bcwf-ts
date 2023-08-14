@@ -1,0 +1,10 @@
+services:
+  app:
+    image: bcwf-prod
+    build:
+      dockerfile: ./Dockerfile.prod
+    env_file:
+      - ./.env.prod
+    restart: always
+    ports:
+      - "3003:3000"

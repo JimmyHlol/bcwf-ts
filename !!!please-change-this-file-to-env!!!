@@ -1,0 +1,16 @@
+# Please regist your own Clerk application at https://clerk.dev and replace the values below
+# for login services to work properly.
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=this-is-a-publishable-key-for-clerk
+CLERK_SECRET_KEY=this-is-a-secret-key-for-clerk
+
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+
+# this is the URL for your request url
+# i.e. https://api.publicapis.org
+SERVER_API_URL=https://openmaps.gov.bc.ca/geo/pub/ows
+
+# this is sentry.io for error reporting
+SENTRY_AUTH_TOKEN=this-is-a-sentry-auth-token

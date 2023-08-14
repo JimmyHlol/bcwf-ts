@@ -29,8 +29,11 @@ export const WildfireClient: React.FC<WildfireClientProps> = ({ data }) => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`BC wildfires (${data ? data.length : 0})`}
-          description={`Filter Wildfires for ${new Date().getFullYear()}`}
+          // title={`BC wildfires (${data ? data.length : 0})`}
+          title={`BC Wildfires`}
+          description={`Total ${
+            data ? data.length : 0
+          } cases in ${new Date().getFullYear()}`}
         />
       </div>
       <Separator />

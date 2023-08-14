@@ -1,0 +1,10 @@
+services:
+  app:
+    image: bcwf-stg
+    build:
+      dockerfile: ./Dockerfile.stg
+    env_file:
+      - ./.env.stg
+    restart: always
+    ports:
+      - "3002:3000"
