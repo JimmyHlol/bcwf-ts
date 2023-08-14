@@ -30,7 +30,14 @@ You have the flexibility to deploy as per your requirements. However, we primari
 - you can use whatever you want, but I am using vsCode for this project's development
 
 4. System graph and 3rd party integration
-- Current workflow for Startup:
+- CI/CD for Startup development:
+```mermaid
+graph LR
+A[Next.js app] --push & PR--> B((Github))
+B --deploy 'current'--> C[Vercel]
+B --github action 'future'--> D[Other selfhosting VM]
+```
+- Current workflow for Startup development:
 ```mermaid
 graph LR
 A[Client Next.js client side] --> B((Clerk Oauth))
