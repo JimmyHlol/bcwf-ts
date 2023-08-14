@@ -1,0 +1,14 @@
+services:
+  app:
+    image: bcwf-dev
+    build:
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/usr/src/app
+      - ./components:/usr/src/components
+      - ./data:/usr/src/data
+      - ./lib:/usr/src/lib
+      - ./providers:/usr/src/providers
+      - ./public:/usr/src/public
