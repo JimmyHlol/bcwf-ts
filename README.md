@@ -32,6 +32,7 @@ You have the flexibility to deploy as per your requirements. However, we primari
 
 
 ### Setting .env*
+Please change `!!!please-change-this-file-to-env!!!` to the `.env.*` file you would like to use
 1. `env.local` is for local development or development docker
 2. `env.stg` is for staging docker
 3. `env.prod` is for production docker
