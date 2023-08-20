@@ -34,15 +34,22 @@ interface BcWildfireFeature {
   id: string;
   geometry: Geometry;
   geometry_name: string;
-  properties: BcWildfireFeatureProperty[];
+  properties: BcWildfireFeatureProperty;
 }
 
-interface CurrentBcWildfireResponse {
+export interface CurrentBcWildfireResponse {
   type: string;
   features: BcWildfireFeature[];
   totalFeatures: number;
+  numberMatched: number;
   numberReturned: number;
   timeStamp: string;
+  crs: {
+    type: string;
+    properties: {
+      name: string;
+    };
+  };
 }
 
 export class BcWildfireProvider {
